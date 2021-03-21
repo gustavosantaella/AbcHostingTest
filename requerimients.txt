@@ -1,0 +1,24 @@
+Let's say there are 4 products in an online shop, an apple is 0.3$, a beer is 2$, water is 1$ each bottle and cheese is 3.74$ each kg. They have been stored in Mysql DB  Create a simple interface where: - I can add/remove products to my virtual shopping cart in any quantities - I can see my current cart status - I have to choose a shipping option between 'pick up' (USD 0) and 'UPS' (USD 5). No option is chosen by default, so if I don't choose one and click on “Pay”, the interface asks me to select one.  - After clicking on 'pay' (Originally my balance is USD 100 and after the purchase the remaining balance is stored) I want to see the previous balance, total purchase cost and my remaining balance after paying.  - The shop should be in English only including code comments - Please write this shop using PHP7.2 OOP - Near each product there is a rating scale from 1 to 5, I can rate it and I can see current average rating of each product. Rating should only be allowed once per session or once per user and rates are stored using Mysql DB. - Some CSS/html/JS so it looks a little better  General requirements - DRY; - Neat and consistent style; - Understandable names; - Clear logic flow (avoiding spaghetti code), short methods; - Minimal reliance on global state: e.g. usage of superglobals. A separate place processing them should be dedicated.  OOP requirements - Logic should be fully inside classes including ajax controller (except, maybe, Views); - Separation of concerns: one class is responsible for a single thing; - Minimum (or zero) amount of static methods; - Encapsulation; - Existence of entities / models like ShoppingCart;  Please DO NOT use anybody else’s work for this. EVERYTHING on this project should be written by you and it should be authentic work. You can use external projects as reference for Jquery, Ajax and Bootstrap if needed. Using any PHP or JS framework is strictly forbidden, but you can use third-party libraries if you need them. Please use Allman coding style, 
+
+-- spanish version--
+
+Digamos que hay 4 productos en una tienda online 
+
+1- manzana  y cuesta 0,3 $
+2- cerveza  y cuesta 2 $
+3- agua cuesta y cuesta 1 $ cada botella 
+4- queso  y cuesta 3,74 $ cada kg.
+
+ Se han almacenado en Mysql DB.
+  Cree una interfaz simple donde: 
+  - Puedo agregar / eliminar productos a mi carrito de compras virtual en cualquier cantidad
+  - Puedo ver el estado de mi carrito actual
+  - Tengo que elegir una opción de envío entre 'recoger' ( USD 0) y 'UPS' (USD 5). No se elige ninguna opción por defecto, por lo que si no elijo una y hago clic en "Pagar", la interfaz me pide que seleccione una.
+  - Después de hacer clic en 'pagar' (originalmente mi saldo es de USD 100 y después de la compra se almacena el saldo restante) quiero ver el saldo anterior, el costo total de la compra y mi saldo restante después de pagar. - La tienda debe estar solo en inglés, incluidos los comentarios del código 
+  - Por favor escriba esta tienda usando PHP7.2 OOP 
+  - Cerca de cada producto hay una escala de calificación del 1 al 5, puedo calificarlo y puedo ver la calificación promedio actual de cada producto. La calificación solo debe permitirse una vez por sesión o una vez por usuario y las tarifas se almacenan utilizando Mysql DB. - Algo de CSS / html / JS para que se vea un poco mejor. Requisitos generales - DRY; - Estilo limpio y consistente; - Nombres comprensibles; 
+  - Flujo lógico claro (evitando el código espagueti), métodos cortos; 
+  - Dependencia mínima del estado global: p. Ej. uso de superglobales. Debe dedicarse un lugar aparte para procesarlos. Requisitos de OOP: la lógica debe estar completamente dentro de las clases, incluido el controlador ajax (excepto, tal vez, Vistas); - Separación de preocupaciones: una clase es responsable de una sola cosa; 
+  - Cantidad mínima (o nula) de métodos estáticos; 
+  - Encapsulación;
+  - Existencia de entidades / modelos como ShoppingCart; NO use el trabajo de otra persona para esto. TODO en este proyecto debe ser escrito por usted y debe ser un trabajo auténtico. Puede usar proyectos externos como referencia para Jquery, Ajax y Bootstrap si es necesario. El uso de cualquier marco PHP o JS está estrictamente prohibido, pero puede usar bibliotecas de terceros si las necesita. Utilice el estilo de codificación Allman,

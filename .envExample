@@ -1,0 +1,5 @@
+DB_HOST= "https://url.com"
+DB_PORT= "5432"
+DB_NAME= "abchostin"
+DB_USERNAME= "root"
+DB_PASSWORD= "root"
