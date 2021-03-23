@@ -16,9 +16,19 @@ Digamos que hay 4 productos en una tienda online
   - Tengo que elegir una opción de envío entre 'recoger' ( USD 0) y 'UPS' (USD 5). No se elige ninguna opción por defecto, por lo que si no elijo una y hago clic en "Pagar", la interfaz me pide que seleccione una.
   - Después de hacer clic en 'pagar' (originalmente mi saldo es de USD 100 y después de la compra se almacena el saldo restante) quiero ver el saldo anterior, el costo total de la compra y mi saldo restante después de pagar. - La tienda debe estar solo en inglés, incluidos los comentarios del código 
   - Por favor escriba esta tienda usando PHP7.2 OOP 
-  - Cerca de cada producto hay una escala de calificación del 1 al 5, puedo calificarlo y puedo ver la calificación promedio actual de cada producto. La calificación solo debe permitirse una vez por sesión o una vez por usuario y las tarifas se almacenan utilizando Mysql DB. - Algo de CSS / html / JS para que se vea un poco mejor. Requisitos generales - DRY; - Estilo limpio y consistente; - Nombres comprensibles; 
+  - Cerca de cada producto hay una escala de calificación del 1 al 5, puedo calificarlo y puedo ver la calificación promedio actual de cada producto. La calificación solo debe permitirse una vez por sesión o una vez por usuario y las tarifas se almacenan utilizando Mysql DB.
+   - Algo de CSS / html / JS para que se vea un poco mejor. 
+
+   Requisitos generales
+  - DRY;
+  - Estilo limpio y consistente;
+  - Nombres comprensibles; 
   - Flujo lógico claro (evitando el código espagueti), métodos cortos; 
-  - Dependencia mínima del estado global: p. Ej. uso de superglobales. Debe dedicarse un lugar aparte para procesarlos. Requisitos de OOP: la lógica debe estar completamente dentro de las clases, incluido el controlador ajax (excepto, tal vez, Vistas); - Separación de preocupaciones: una clase es responsable de una sola cosa; 
+  - Dependencia mínima del estado global: p. Ej. uso de superglobales. Debe dedicarse un lugar aparte para procesarlos. 
+
+  Requisitos de OOP: la lógica debe estar completamente dentro de las clases, incluido el controlador ajax (excepto, tal vez, Vistas); - Separación de preocupaciones: una clase es responsable de una sola cosa; 
   - Cantidad mínima (o nula) de métodos estáticos; 
   - Encapsulación;
-  - Existencia de entidades / modelos como ShoppingCart; NO use el trabajo de otra persona para esto. TODO en este proyecto debe ser escrito por usted y debe ser un trabajo auténtico. Puede usar proyectos externos como referencia para Jquery, Ajax y Bootstrap si es necesario. El uso de cualquier marco PHP o JS está estrictamente prohibido, pero puede usar bibliotecas de terceros si las necesita. Utilice el estilo de codificación Allman,
+  - Existencia de entidades / modelos como ShoppingCart;
+
+   NO use el trabajo de otra persona para esto. TODO en este proyecto debe ser escrito por usted y debe ser un trabajo auténtico. Puede usar proyectos externos como referencia para Jquery, Ajax y Bootstrap si es necesario. El uso de cualquier marco PHP o JS está estrictamente prohibido, pero puede usar bibliotecas de terceros si las necesita. Utilice el estilo de codificación Allman,

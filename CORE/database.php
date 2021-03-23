@@ -1,4 +1,72 @@
 <?php 
+/*class database{
+
+	private $host;
+	private $port;
+	private $user;
+	private $pass;
+	public  $conex;
+	private $opciones;
+
+
+	public  function __construct(){
+
+		
+		$this->host   = env['DB_HOST'];
+		$this->port   = env['DB_PORT'];
+		$this->user   = env['DB_USERNAME'];
+		$this->dbname = env['DB_NAME'];
+		$this->pass   = env['DB_PASSWORD'];
+		
+		
+
+
+	}
+	
+
+	
+	public function conex(){
+
+		try{
+
+			$conex = $this->conex = new mysqli("$this->host","$this->user","$this->pass","$this->dbname")or die("ERROR");
+
+
+			return $conex;
+
+		}catch(PDOException $e){
+
+			echo"Error: $e";
+
+		}
+	}
+
+
+
+
+	public function closeConex(){
+
+		$this->file=null;
+		$this->conex=null;
+		$this->port=null;
+		$this->user=null;
+		$this->pass=null;
+		$this->dbname=null;
+		$this->host=null;
+	}
+}
+
+
+
+*/
+
+
+?>
+
+
+
+
+<?php 
 class database{
 
 	private $host;
@@ -49,9 +117,8 @@ class database{
 
 
 
-	public function closeConex(){
+	public function close(){
 
-		$this->file=null;
 		$this->conex=null;
 		$this->port=null;
 		$this->user=null;

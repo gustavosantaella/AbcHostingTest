@@ -1,10 +1,12 @@
 <?php
+session_start();
 define('env',parse_ini_file('.env'));
 require_once("CONTROLLERS/config.php");
 require_once("CORE/controller.php");
 require_once("CORE/view.php");
 require_once("CORE/database.php");
 require_once("CORE/loadModel.php");
+require_once("CORE/loadController.php");
 require_once("CORE/functions.php");
 /*if isset var controller in url?*/
 if ($_GET && $_GET['controller'] ) 
