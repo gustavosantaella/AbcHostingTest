@@ -34,7 +34,7 @@ class databaseModel extends loadModel
 		$this->conex->conex()->prepare($string)->execute();
 
 #create table cart 
-		$string = "
+		/*$string = "
 		CREATE TABLE IF NOT EXISTS carts(
 		id int AUTO_INCREMENT NOT NULL,
 		user_id int,
@@ -43,10 +43,10 @@ class databaseModel extends loadModel
 		REFERENCES users (id) 
 		ON DELETE CASCADE  );";
 
-		$this->conex->conex()->prepare($string)->execute();
+		$this->conex->conex()->prepare($string)->execute();*/
 
 #cretae table cart_rows
-		$string = "
+		/*$string = "
 		CREATE TABLE IF NOT EXISTS cart_rows(
 		id serial NOT NULL,
 		stock int,
@@ -56,14 +56,26 @@ class databaseModel extends loadModel
 		FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
 		FOREIGN KEY (cart_id) REFERENCES carts(id) ON DELETE CASCADE );";
 
-		$this->conex->conex()->prepare($string)->execute();
+		$this->conex->conex()->prepare($string)->execute();*/
 
-		#cretae table wallets
+#cretae table wallets
 		$string = "
 		CREATE TABLE IF NOT EXISTS wallets(
+		id int NOT NULL  AUTO_INCREMENT PRIMARY KEY,
 		user_id int NOT NULL,
-		cash bigint,
+		cash FLOAT NULL,
 		FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE );";
+
+		$this->conex->conex()->prepare($string)->execute();
+
+#cretae table movements
+		$string = "
+		CREATE TABLE IF NOT EXISTS movements(
+		id int NOT NULL  AUTO_INCREMENT PRIMARY KEY,
+		wallet_id int NOT NULL,
+		last_cash FLOAT NULL,
+		movement FLOAT NULL,
+		FOREIGN KEY (wallet_id) REFERENCES wallets(id) ON DELETE CASCADE );";
 
 		$this->conex->conex()->prepare($string)->execute();
 

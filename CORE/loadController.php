@@ -13,7 +13,7 @@ class loadController
   	}
   	else
   	{
-  		die("no se puede encontrar el modelo: $controller");
+  		die("not found controller: $controller");
   	}
   }
 }

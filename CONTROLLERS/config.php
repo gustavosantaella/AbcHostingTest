@@ -1,7 +1,9 @@
 <?php 
-
+include('TRAITS/validator.php');
+use TRAITS\validator;
 class controller
 {
+		use validator;
 	public function __construct()
 	{
 		
@@ -34,4 +36,7 @@ class controller
 
 		}
 	}
+
+
+	
 }

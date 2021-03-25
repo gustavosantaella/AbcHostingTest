@@ -11,3 +11,4 @@
 		?>
 	</div>
 </div>
+<script src="<?php urlBase() ?>PUBLIC/JS/partials/cart.js"></script>

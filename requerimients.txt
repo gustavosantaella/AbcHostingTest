@@ -14,7 +14,8 @@ Digamos que hay 4 productos en una tienda online
   - Puedo agregar / eliminar productos a mi carrito de compras virtual en cualquier cantidad
   - Puedo ver el estado de mi carrito actual
   - Tengo que elegir una opción de envío entre 'recoger' ( USD 0) y 'UPS' (USD 5). No se elige ninguna opción por defecto, por lo que si no elijo una y hago clic en "Pagar", la interfaz me pide que seleccione una.
-  - Después de hacer clic en 'pagar' (originalmente mi saldo es de USD 100 y después de la compra se almacena el saldo restante) quiero ver el saldo anterior, el costo total de la compra y mi saldo restante después de pagar. - La tienda debe estar solo en inglés, incluidos los comentarios del código 
+  - Después de hacer clic en 'pagar' (originalmente mi saldo es de USD 100 y después de la compra se almacena el saldo restante) quiero ver el saldo anterior, el costo total de la compra y mi saldo restante después de pagar. 
+  - La tienda debe estar solo en inglés, incluidos los comentarios del código 
   - Por favor escriba esta tienda usando PHP7.2 OOP 
   - Cerca de cada producto hay una escala de calificación del 1 al 5, puedo calificarlo y puedo ver la calificación promedio actual de cada producto. La calificación solo debe permitirse una vez por sesión o una vez por usuario y las tarifas se almacenan utilizando Mysql DB.
    - Algo de CSS / html / JS para que se vea un poco mejor. 

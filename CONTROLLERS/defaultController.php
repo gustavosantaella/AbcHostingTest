@@ -1,18 +1,25 @@
 <?php 
+
 class defaultController extends controller
 {
+
 	private $database;
 
 	public function __construct()
 	{
+		/* load models */
 		new loadModel('product');
-		new loadModel('user');
-		//new loadModel('databaseModel');
 		$this->database = new database;
 		
 		parent::__construct();
 	}
 
+	/*************
+	*
+	*	Method: index
+    *	function:return view and product list
+    *	
+	*****************/
 	public function index()
 	{
 		$model = new product($this->database);
@@ -23,16 +30,25 @@ class defaultController extends controller
 		$this::footerPage();
 	}
 
+    /*************
+	*
+	*	Method: headerPage
+    *	function:return view 
+    *	
+	*****************/
 	public function headerPage()
 	{
-		new loadModel('ShoppingCart');
-		$bd = new database;
-		$model = new ShoppingCart($this->database);
-		$count = $model->countCart();
-		new view("layout/header.php",$count);
+
+		new view("layout/header.php");
 
 	}
 
+    /*************
+	*
+	*	Method: footerPage
+    *	function:return view 
+    *	
+	*****************/
 	public function footerPage()
 	{
 

@@ -22,6 +22,8 @@
 	<link rel="stylesheet" type="text/css" href="<?php urlBase() ?>PUBLIC/CSS/app.css">
 	<meta http-equiv="Cache-Control" content="no-store" />
 
+<!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 
@@ -32,14 +34,14 @@
 			</li>
 
 			<li class="nav-item p-2">
-				<a href="<?php urlBase() ?>ShoppingCartController/show" class="nav-link">Cart <span id="count">(<?php echo $data->count ?>)</span></a>
+				<a href="<?php urlBase() ?>ShoppingCartController/show" class="nav-link">Cart <span id="count"></span></a>
 			</li>
 
 			<li class="nav-item p-2">
 
 				<?php if (isset($_SESSION['user'])): ?>
 					
-					<a href="#" class="nav-link">
+				<a href="<?php urlBase() ?>UserController/profile" class="nav-link">
 						Profile
 					</a>
 					<?php else: ?>
@@ -51,3 +53,5 @@
 					</li>
 				</ul>
 			</nav>
+<div class="container-fluid">
+	

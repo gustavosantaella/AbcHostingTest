@@ -79,7 +79,7 @@ class ShoppingCart extends loadModel
 			c.name,
 			c.description,
 			c.price,
-			b.cart_id
+			b.cart_id as cart_id
 			FROM {$this->tables[0]} a INNER JOIN
 			{$this->tables[1]} b ON a.id = b.cart_id INNER JOIN
 			{$this->tables[2]} c ON b.product_id = c.id
