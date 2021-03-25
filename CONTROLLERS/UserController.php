@@ -141,4 +141,14 @@ class UserController extends defaultController
 		$this::footerPage();
 	}
 
+	/*delete session*/
+	public function logout()
+	{
+		$this->ifExistSession('index',null);
+		unset($_SESSION['user']);
+		unset($_SESSION['userId']);
+
+		$this->ifExistSession('index',null);
+	}
+
 }

@@ -2,6 +2,9 @@
 	<div class="table-responsive">
 		<div class="card text-center">
 			<div class="card-body">
+				<div class="float-right">
+					<a href="<?php urlBase() ?>UserController/logout" class='text-decoration-none font-weight-bold btn btn-danger'>Logout</a>
+				</div>
 				<h4 class="card-title h1">$./<?php echo $data[0]->cash ?></h4>
 				<table class="table table-hover table-inverse">
 					<thead>

@@ -30,16 +30,25 @@ class ShoppingCart extends loadModel
 
 	}
 
-	public function storeLinerowsCart(object $data, int $id):bool
+	public function storeLineCart(object $data, int $id)
 	{
 
 		try
 		{
+			//print_r($data);
 
 			$this->query = "INSERT into {$this->tables[1]} (stock,cart_id,product_id) VALUES(:stock,:cid,:pid)";
 			$prepare = $this->conex->conex()->prepare($this->query);
+			foreach ($data as $key => $value) {
+				
+		$execute = $prepare->execute([
+					':stock'=>$value['stock'],
+					':cid'=>$id,
+					':pid'=>$value['id']
+				]);
+			}
+			return $execute;
 			$this->conex->close();
-			return $prepare->execute([':stock'=>1,':cid'=>$id,':pid'=>$data->id]);
 			
 			
 		} 
@@ -59,7 +68,7 @@ class ShoppingCart extends loadModel
 		return $prepare->fetchAll(PDO::FETCH_OBJ);
 	}
 
-	public function countCart(){
+	/*public function countCart(){
 		$this->query = "SELECT COUNT('*') as count FROM {$this->tables[0]} WHERE user_id =:id";
 		$prepare = $this->conex->conex()->prepare($this->query);
 		$prepare->execute(['id'=>$_SESSION['userId']]);
@@ -95,9 +104,9 @@ class ShoppingCart extends loadModel
 		}
 
 	}
+*/
 
-
-	public function remove($id)
+/*	public function remove($id)
 	{
 		try 
 		{
@@ -110,5 +119,5 @@ class ShoppingCart extends loadModel
 		{
 			print "Error!: " . $e->getMessage() . "</br>";
 		}
-	}
+	}*/
 }

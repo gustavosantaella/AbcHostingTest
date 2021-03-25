@@ -22,8 +22,8 @@
 	<link rel="stylesheet" type="text/css" href="<?php urlBase() ?>PUBLIC/CSS/app.css">
 	<meta http-equiv="Cache-Control" content="no-store" />
 
-<!-- Optional: include a polyfill for ES6 Promises for IE11 -->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 
@@ -44,6 +44,18 @@
 				<a href="<?php urlBase() ?>UserController/profile" class="nav-link">
 						Profile
 					</a>
+					<!-- <div class="dropdown show">
+						<a class="nav-link dropdown-toggle"  id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<?php echo $_SESSION['user'] ?>
+						</a>
+
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item" href="#">Another action</a>
+							<a class="dropdown-item" href="#">Something else here</a>
+						</div>
+					</div> -->
+
 					<?php else: ?>
 
 						<a href="<?php urlBase() ?>UserController/index" class="nav-link">
@@ -53,5 +65,5 @@
 					</li>
 				</ul>
 			</nav>
-<div class="container-fluid">
-	
+			<div class="container-fluid">
+

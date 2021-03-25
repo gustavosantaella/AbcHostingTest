@@ -1,12 +1,14 @@
-
+/*we count the elements in the cart session*/
 const countRowCart =async (url) => {
 
 	$("#count").load(url);
 }
 
+/*function in charge of adding elements to the cart*/
 const addToCart  = async (product) =>{
 
 
+	/*we make a POST request to the server*/
 	const response = await $.ajax({
 		type:"POST",
 		url:"ShoppingCartController/store",
@@ -17,13 +19,14 @@ const addToCart  = async (product) =>{
 			description:product.description
 		}
 	});
-
+	/*we stop the results*/
 	const	data = JSON.parse(response)
 	if (data.state)
 	{
 		console.log(data)
-		
+		/*if it is correct, we use the countRowCart function to count the elements.*/
 		countRowCart('ShoppingCartController/countRowCart')
+		/*notification*/
 		notify()
 	}
 
@@ -31,23 +34,28 @@ const addToCart  = async (product) =>{
 
 const notify = () => {
 
+	/*we show the notification*/
 	$('#listProduct > .notify').toggleClass('activeNotify')
+	/*after 18000 milliseconds the notification disappears*/
 	setTimeout(()=>{$('#listProduct > .notify').toggleClass('activeNotify')},1800)
 }
 
 const listCart =async () =>{
 
+	/*we get all the products stored in the cart*/
 	const response = await axios.get('getCart');
 	const data = response.data;
-
+	/*if the answer is greater than 0, it means that there are items in the cart*/
 	if (data.length >0)
 	{
-		
+		/*We call the function in charge of displaying the cart*/
 		listPartial(data)
 
 	}
 	else
 	{
+		/*Empty cart*/
+
 		$(document).ready(()=>{
 			if ($('#buy').length >0) 
 			{
@@ -69,15 +77,19 @@ const listCart =async () =>{
 
 }
 
+/* list cart*/
 const listPartial = (data) =>{
-	
+
 	var html = ''
 	var price =[];
 	var i= 0
+	/*we loop through the server response*/
 	data.forEach(e =>{
+		/*for each element it will show a row with the element's data*/
 		i++
+		/*we calculate the unit total*/
 		unitTotal = e.price * e.stock;
-
+		/*we add the total to an empty array*/
 		price.push(e.price * e.stock)
 		html += `
 		<tr>
@@ -88,15 +100,21 @@ const listPartial = (data) =>{
 		<td id='price'>$./${e.price}</td>
 		<td id='unitTotal'>$./${unitTotal.toFixed(2)}</td>
 		<td id='button'>
-		<button type="button" id='s' onclick="remove(${e.id})" class='btn btn-danger font-weight-bold'>Remove</button>
+		<button type="button"
+		id='s'
+		onclick="remove(${e.id})" 
+		class='btn btn-danger font-weight-bold'>
+		Remove
+		</button>
 		</td>
 		</tr>
 
 		`;
 	})
-
+	/*sum total price*/
 	let  total= price.reduce((a,b)=> {return a+b})
 
+	/*show table*/
 	$('#tbody').html(html);
 	$('#total').html(`$./${total.toFixed(2)}`);
 
@@ -118,11 +136,8 @@ const listPartial = (data) =>{
 
 }
 
-
+/*delete element*/
 const remove =async (param) => { 
-
-	//console.log(param)
-
 
 	await $.ajax({
 		type:"POST",
@@ -132,8 +147,9 @@ const remove =async (param) => {
 		}
 	})
 	.then(e=>{
-
+		/*count cart*/
 		countRowCart('countRowCart')
+		/*call to function for list cart*/
 		listCart()
 	})
 	.catch(e=>console.log(e))
@@ -142,8 +158,9 @@ const remove =async (param) => {
 
 }
 
+/*buy*/
 const buy = async (param) =>{
-	
+	/*we send the elements inside the cart*/
 	await $.ajax({
 		type:'POST',
 		url:"buy",
@@ -151,34 +168,37 @@ const buy = async (param) =>{
 			data:param
 		}
 	}).then(e => {
-	r = JSON.parse(e)
+		
+		/*If the server's response is correct, we will show a message on the screen*/
+		r = JSON.parse(e)
 
 		if (r.state)
-		{	console.log('true',e)
-			listCart()
-			countRowCart('countRowCart')
-			message({
-				title:'Succsess!',
-				text:'Thank you for buying!',
-				icon:'success',
-			})
-		}
-		else
-		{
-			console.log('else',r.state)
-			message({
-				title:'Sorry!',
-				text:'Sorry not enough money!',
-				icon:'warning',
-			})
-			
-		}
+			{	console.log('true',e)
+		listCart()
+		countRowCart('countRowCart')
+		message({
+			title:'Succsess!',
+			text:'Thank you for buying!',
+			icon:'success',
+		})
+	}
+	else
+	{
+		/*If the response from the server is incorrect, we display a message on the screen*/
+		console.log('else',r.state)
+		message({
+			title:'Sorry!',
+			text:'Sorry not enough money!',
+			icon:'warning',
+		})
 
-	})
+	}
+
+})
 	.catch(e => console.log('error',e))
 }
 
-
+/*message*/
 const message = (data) => {
 
 	swal({

@@ -13,7 +13,7 @@ class loadModel
   	}
   	else
   	{
-  		die("no se puede encontrar el modelo: $model");
+  		die("Model not found: $model");
   	}
   }
 }

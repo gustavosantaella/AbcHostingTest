@@ -8,6 +8,7 @@ class ShoppingCartController extends defaultController
 	public $price;
 	public $stock;
 	public $cart;
+	public $model;
 
 
 	/*************
@@ -192,8 +193,8 @@ class ShoppingCartController extends defaultController
 		{
 
 			$user = $data->fetch(PDO::FETCH_OBJ);
-			/*We verify that the user's capital is greater than the total price*/
-			if ($user->cash >$sum)
+			/*We verify that the user's capital is greater than the total price or equal*/
+			if ($user->cash >=$sum)
 			{
 				
 				$user->total =$sum;
@@ -203,8 +204,10 @@ class ShoppingCartController extends defaultController
 					/*We update the wallet*/
 					$model->updateCash($user->cash - $user->total,$user->user_id);
 					/*reset session */
-					$_SESSION['cart'] =[];
-					echo json_encode(['state'=>true]);
+					//$_SESSION['cart'] =[];
+					//echo json_encode(['state'=>true]);
+					$this->cart =(object)$_SESSION['cart'];
+					$this->storeCart();
 					return true;
 				}
 			}
@@ -214,6 +217,34 @@ class ShoppingCartController extends defaultController
 			}
 		}
 		
+	}
 
+	public function storeCart()
+	{
+		new loadModel('ShoppingCart');
+		$model =$this->model = new ShoppingCart(new database);
+		if ($model->store()) 
+		{
+			$this->id = $model->maxId();
+			$this->storeLineCart();
+			return true;
+		}
+		
+	}
+
+
+	public function storeLineCart()
+	{
+
+		if(! $this->model->storeLineCart($this->cart,$this->id[0]->id))
+		{
+			echo json_encode(['state'=>false]);
+		}
+		else
+		{
+			$this->cart = [];
+			$_SESSION['cart'] = [];
+			echo json_encode(['state'=>true]);
+		}
 	}
 }
