@@ -173,6 +173,8 @@ class ShoppingCartController extends defaultController
 	public function buy()
 	{
 		$request = 	$this::validate($_SESSION,['userId','user','cart']);
+		$option = 	$this::validate($_POST,['option']);
+
 
 		/*we go through the session array and save in a new array the unit price result by the quantity*/
 		$total = [];	
@@ -187,7 +189,7 @@ class ShoppingCartController extends defaultController
 		$user =(object)$_SESSION;
 		$data =$model->getInfoUser($user);
 		/*we add the arrangement*/
-		$sum = array_sum($total);
+		$sum = array_sum($total)+ $option->option;
 		/*if the user exists*/
 		if ($data->rowCount() > 0 ) 
 		{
@@ -203,7 +205,7 @@ class ShoppingCartController extends defaultController
 				{
 					/*We update the wallet*/
 					$model->updateCash($user->cash - $user->total,$user->user_id);
-					/*reset session */
+					
 					//$_SESSION['cart'] =[];
 					//echo json_encode(['state'=>true]);
 					$this->cart =(object)$_SESSION['cart'];
@@ -242,7 +244,7 @@ class ShoppingCartController extends defaultController
 		}
 		else
 		{
-			$this->cart = [];
+			/*reset session */
 			$_SESSION['cart'] = [];
 			echo json_encode(['state'=>true]);
 		}

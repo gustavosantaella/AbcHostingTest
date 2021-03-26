@@ -60,6 +60,7 @@ const listCart =async () =>{
 			if ($('#buy').length >0) 
 			{
 				$('#buy').remove();
+				$('#select-content').remove();
 			}
 		})
 		$('#tbody').html(`
@@ -121,6 +122,7 @@ const listPartial = (data) =>{
 	
 	if (!$('#buy').length >0) 
 	{
+
 		button = document.createElement('input')
 		button.setAttribute('id','buy')
 		button.setAttribute('type','button')
@@ -128,7 +130,17 @@ const listPartial = (data) =>{
 		button.setAttribute('class','btn btn-success font-weight-bold')
 		button.setAttribute('value','Buy')
 		$('#buyButton').append(button)
+		$('#buyButton').before(`
 
+			<div class='mb-3' id='select-content'>
+			<h3 class='mb-2'>Option</h3>
+			<select id='select' class='form-control'>
+			<option>--Select option-- </option>
+			<option value='5'> 5$</option>
+			<option value='0'> 0$</option>
+			</select>
+			</div>
+			`);
 
 		
 	}
@@ -161,41 +173,52 @@ const remove =async (param) => {
 /*buy*/
 const buy = async (param) =>{
 	/*we send the elements inside the cart*/
-	await $.ajax({
-		type:'POST',
-		url:"buy",
-		data:{
-			data:param
-		}
-	}).then(e => {
-		
-		/*If the server's response is correct, we will show a message on the screen*/
-		r = JSON.parse(e)
+	if($('#select').val() ==5 ||$('#select').val() ==0)
+	{
+		await $.ajax({
+			type:'POST',
+			url:"buy",
+			data:{
+				data:param,
+				option:$('#select').val()
+			}
+		}).then(e => {
 
-		if (r.state)
-			{	console.log('true',e)
-		listCart()
-		countRowCart('countRowCart')
-		message({
-			title:'Succsess!',
-			text:'Thank you for buying!',
-			icon:'success',
+			/*If the server's response is correct, we will show a message on the screen*/
+			r = JSON.parse(e)
+			console.log(e)
+			if (r.state)
+			{	
+				listCart()
+				countRowCart('countRowCart')
+				message({
+					title:'Succsess!',
+					text:'Thank you for buying!',
+					icon:'success',
+				})
+			}
+			else
+			{
+				/*If the response from the server is incorrect, we display a message on the screen*/
+				console.log('else',r.state)
+				message({
+					title:'Sorry!',
+					text:'Sorry not enough money!',
+					icon:'warning',
+				})
+
+			}
+
 		})
+		.catch(e => console.log('error',e))
 	}
 	else
 	{
-		/*If the response from the server is incorrect, we display a message on the screen*/
-		console.log('else',r.state)
-		message({
-			title:'Sorry!',
-			text:'Sorry not enough money!',
-			icon:'warning',
+		$('#select').css({
+			border:'1px solid red',
+			transition:'0.5s'
 		})
-
 	}
-
-})
-	.catch(e => console.log('error',e))
 }
 
 /*message*/
